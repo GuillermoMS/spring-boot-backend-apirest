@@ -10,3 +10,29 @@ INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Dr. James', 'G
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Magma', 'Lee', 'magma.lee@gmail.com', '2018-03-04');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tornado', 'Roe', 'tornado.roe@gmail.com', '2018-03-05');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jade', 'Doe', 'jane.doe@gmail.com', '2018-03-06');
+
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Anwwwdrés', 'Guzmerrán', 'profesereror@bolsadeideas.com', '2019-01-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Mr.ww John', 'Dfsefeoe', 'joherern.doe@gmail.com', '2020-01-02');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('wdadg', 'awdaw', 'lierernus.torvalds@gmail.com', '2018-01-03');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Raswwggmus', 'Lerwawddorf', 'raserermus.lerdorf@gmail.com', '2018-01-04');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Eriwwch', 'Gamwwama', 'ericererh.gamma@gmail.com', '2018-02-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Ricwwhard', 'Hwdwadelm', 'richererard.helm@gmail.com', '2020-02-10');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Rawwph', 'Johnwdadson', 'ralererph.johnson@gmail.com', '2019-02-18');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('www', 'Vlisswdawdides', 'joherern.vlissides@gmail.com', '2020-02-28');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('wqweDr. JamwWes', 'Gosling', 'jaerermes.gosling@gmail.com', '2018-03-03');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Maqewegma', 'LgsSee', 'magmerera.lee@gmail.com', '2018-03-04');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tosdsrnado', 'Rersfe', 'errer.roe@gmail.com', '2020-03-05');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jadsdasde', 'Dosdfsde', 'jane.doe@eregmail.com', '2019-03-06');
+
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andgdsfrés', 'Guzmásdfsdn', 'proferersor@bolsadeideas.com', '2018-01-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Mrcas. John', 'Dsfsdoe', 'john.doeerer@gmail.com', '2018-01-02');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('wdwwd', 'Torvsdhgalds', 'linus.torrerevalds@gmail.com', '2020-01-03');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Rasdwdadmus', 'Lerdjyorf', 'rasmus.lerererdorf@gmail.com', '2018-01-04');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Eriaasdch', 'Gamtthtma', 'erich.rer@gmail.com', '2019-02-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('sdadas', 'Heeffelm', 'richard.erer@gmail.com', '2020-02-10');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Ralgdgdgph', 'Johnsfdgfdon', 'ralph.johnsereron@gmail.com', '2019-02-18');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Johwadan', 'Vlissisfsdfdes', 'john.vliererssides@gmail.com', '2019-02-28');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jawdadames', 'dgdfgdgdg', 'holaholaquehacesg@gmail.com', '2020-03-03');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Magmasdasda', 'Lesdfdse', 'masfgma.lee@sadagmail.com', '2018-03-04');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tggdfornado', 'Rosdfhe', 'tornado.radasdoe@gmail.com', '2020-03-05');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jhtdrade', 'Dortrtre', 'jane.doe@asdagmail.com', '2019-03-06');
