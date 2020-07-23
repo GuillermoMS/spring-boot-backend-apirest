@@ -33,7 +33,17 @@ public class Cliente implements Serializable{
 	@Column(name="create_at")
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
-	
+
+	private String profileImg;
+
+	public String getProfileImg() {
+		return profileImg;
+	}
+
+	public void setProfileImg(String profileImg) {
+		this.profileImg = profileImg;
+	}
+
 	public Long getId() {
 		return id;
 	}

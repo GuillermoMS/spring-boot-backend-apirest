@@ -3,19 +3,26 @@
  import com.bolsadeideas.springboot.backend.apirest.model.entity.Cliente;
  import com.bolsadeideas.springboot.backend.apirest.models.services.IClienteService;
  import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.core.io.Resource;
+ import org.springframework.core.io.UrlResource;
  import org.springframework.dao.DataAccessException;
  import org.springframework.data.domain.Page;
  import org.springframework.data.domain.PageRequest;
+ import org.springframework.http.HttpHeaders;
  import org.springframework.http.HttpStatus;
  import org.springframework.http.ResponseEntity;
  import org.springframework.validation.BindingResult;
  import org.springframework.web.bind.annotation.*;
+ import org.springframework.web.multipart.MultipartFile;
 
  import javax.validation.Valid;
- import java.util.Date;
- import java.util.HashMap;
- import java.util.List;
- import java.util.Map;
+ import java.io.File;
+ import java.io.IOException;
+ import java.net.MalformedURLException;
+ import java.nio.file.Files;
+ import java.nio.file.Path;
+ import java.nio.file.Paths;
+ import java.util.*;
  import java.util.stream.Collectors;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
@@ -126,7 +133,6 @@ public class ClienteRestController {
 						response.put("cliente", clienteUpdate);
 						httpStatus = HttpStatus.CREATED;	
 					}
-					
 				}
 				
 			} catch (DataAccessException e) {
@@ -147,6 +153,7 @@ public class ClienteRestController {
 		Map<String, Object> response = new HashMap<>();
 		HttpStatus httpStatus = null;
 		try {
+			deleteProfileImg(id);
 			clienteService.delete(id);
 			response.put("mensaje", "Cliente eliminado con exito.");
 			httpStatus = HttpStatus.OK;
@@ -157,6 +164,78 @@ public class ClienteRestController {
 		}
 		return new ResponseEntity<Map<String, Object>>(response, httpStatus); 
 		
+	}
+
+	@PostMapping("clientes/upload")
+	public ResponseEntity<?> upload(@RequestParam("profileImg") MultipartFile profileImg, @RequestParam("id") Long id){
+
+		Map<String, Object> response = new HashMap<>();
+		HttpStatus httpStatus = null;
+
+		try {
+			Cliente cliente = clienteService.findById(id);
+			if (!profileImg.isEmpty()){
+				String profileImgName = UUID.randomUUID().toString() + "_" + profileImg.getOriginalFilename().replace(" ", "");
+				Path profileImgPath = Paths.get("uploads").resolve(profileImgName).toAbsolutePath();
+				Files.copy(profileImg.getInputStream(), profileImgPath);
+				deleteProfileImg(id);
+				cliente.setProfileImg(profileImgName);
+				clienteService.save(cliente);
+				response.put("cliente", cliente);
+				response.put("mensaje", "Has subido correctamente la imagen: " + profileImgName);
+				httpStatus = HttpStatus.OK;
+			}else{
+				response.put("mensaje", "No se ha podido subir la imagen, intentelo de nuevo más tarde!");
+				httpStatus = HttpStatus.BAD_REQUEST;
+			}
+		}catch (DataAccessException dataEx){
+			response.put("mensaje", "Error interno inesperado.");
+			response.put("error", dataEx.getMessage() + ": " + dataEx.getMostSpecificCause().getMessage());
+			httpStatus =  HttpStatus.INTERNAL_SERVER_ERROR;
+		}catch (IOException ioException){
+			response.put("mensaje", "Error interno inesperado.");
+			response.put("error", ioException.getMessage());
+			httpStatus =  HttpStatus.INTERNAL_SERVER_ERROR;
+		}
+
+		return new ResponseEntity<Map<String, Object>>(response, httpStatus);
+	}
+
+	@GetMapping("/uploads/img/{profileImgName:.+}")
+	public ResponseEntity<Resource> getProfileImg(@PathVariable String profileImgName){
+		Path pathProfileImg = Paths.get("uploads").resolve(profileImgName).toAbsolutePath();
+		Resource resource = null;
+
+		try {
+			resource = new UrlResource(pathProfileImg.toUri());
+			if (!resource.exists() || !resource.isReadable()){
+				throw new RuntimeException("Error no se pudo cargar la imagen: " + profileImgName);
+			}
+		}catch (MalformedURLException e){
+			e.printStackTrace();
+		}
+		HttpHeaders httpHeaders = new HttpHeaders();
+		httpHeaders.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + pathProfileImg + "\"");
+		return new ResponseEntity<Resource>(resource, httpHeaders, HttpStatus.OK);
+	}
+
+	private void deleteProfileImg(Long id){
+		try {
+			Cliente cliente = clienteService.findById(id);
+			if (null != cliente){
+				String profileImgLast = cliente.getProfileImg();
+				if (null != profileImgLast && !profileImgLast.isEmpty()){
+					Path pathProfileImgLast = Paths.get("uploads").resolve(profileImgLast).toAbsolutePath();
+					File fileProfileImgLast = pathProfileImgLast.toFile();
+					if (fileProfileImgLast.exists() && fileProfileImgLast.canRead()){
+						fileProfileImgLast.delete();
+					}
+				}
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+
 	}
 	
 }
