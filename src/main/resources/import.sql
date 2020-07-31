@@ -19,7 +19,7 @@ INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Eriwwch', 'Gam
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Ricwwhard', 'Hwdwadelm', 'richererard.helm@gmail.com', '2020-02-10');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Rawwph', 'Johnwdadson', 'ralererph.johnson@gmail.com', '2019-02-18');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('www', 'Vlisswdawdides', 'joherern.vlissides@gmail.com', '2020-02-28');
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('wqweDr. JamwWes', 'Gosling', 'jaerermes.gosling@gmail.com', '2018-03-03');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('wJamwWes', 'Gosling', 'jaerermes.gosling@gmail.com', '2018-03-03');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Maqewegma', 'LgsSee', 'magmerera.lee@gmail.com', '2018-03-04');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tosdsrnado', 'Rersfe', 'errer.roe@gmail.com', '2020-03-05');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jadsdasde', 'Dosdfsde', 'jane.doe@eregmail.com', '2019-03-06');
