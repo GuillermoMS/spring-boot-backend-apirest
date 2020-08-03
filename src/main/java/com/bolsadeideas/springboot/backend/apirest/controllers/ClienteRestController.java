@@ -1,6 +1,7 @@
 package com.bolsadeideas.springboot.backend.apirest.controllers;
 
 import com.bolsadeideas.springboot.backend.apirest.model.entity.Cliente;
+import com.bolsadeideas.springboot.backend.apirest.model.entity.Region;
 import com.bolsadeideas.springboot.backend.apirest.models.services.IClienteService;
 import com.bolsadeideas.springboot.backend.apirest.models.services.IUploadFileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,6 +126,7 @@ public class ClienteRestController {
                     clienteUpdate.setApellido(cliente.getApellido());
                     clienteUpdate.setEmail(cliente.getEmail());
                     clienteUpdate.setCreateAt(new Date());
+                    clienteUpdate.setRegion(cliente.getRegion());
                     clienteUpdate = clienteService.save(clienteUpdate);
 
                     if (null == clienteUpdate) {
@@ -219,6 +221,11 @@ public class ClienteRestController {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"");
         return new ResponseEntity<Resource>(resource, httpHeaders, HttpStatus.OK);
+    }
+
+    @GetMapping("/clientes/regiones")
+    public List<Region> listarRegiones() {
+        return clienteService.findAllRegiones();
     }
 
 }
